@@ -80,6 +80,7 @@ return {
         { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
         -- コピーモード
         { key = "c", mods = "LEADER", action = act.ActivateCopyMode },
+        { key = "v", mods = "LEADER", action = act.PasteFrom("Clipboard") },
         -- フォントサイズ切替
         { key = ";", mods = "CTRL", action = act.IncreaseFontSize },
         { key = "-", mods = "CTRL", action = act.DecreaseFontSize },

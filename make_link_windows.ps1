@@ -229,11 +229,6 @@ $items =
     Where-Object { -not $_.PSIsContainer -or $_.PSIsContainer } |
     Sort-Object Name
 
-if ($items.Count -eq 0) {
-    Write-Host "No items found under: $DotConfigRoot"
-    exit 0
-}
-
 foreach ($it in $items) {
     # ここでは「ファイル/ディレクトリ」以外（例えば特殊）も来る可能性があるのでガード
     if (-not ($it -is [System.IO.FileSystemInfo])) {

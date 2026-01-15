@@ -11,6 +11,8 @@ config.macos_window_background_blur = 20
 -- Shell
 ----------------------------------------------------
 config.default_prog = { "pwsh.exe", "-NoLogo" }
+-- config.default_domain = 'WSL:Ubuntu-24.04'
+-- config.default_cwd = "/home/Iris"
 
 ----------------------------------------------------
 -- Tab
