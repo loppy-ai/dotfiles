@@ -11,8 +11,20 @@ config.macos_window_background_blur = 20
 -- Shell
 ----------------------------------------------------
 config.default_prog = { "pwsh.exe", "-NoLogo" }
--- config.default_domain = 'WSL:Ubuntu-24.04'
--- config.default_cwd = "/home/Iris"
+config.default_domain = 'WSL:Ubuntu-24.04'
+
+config.launch_menu = {
+    {
+        label = 'PowerShell',
+        args = { 'pwsh.exe', '-NoLogo' },
+        domain = { DomainName = 'local' },
+    },
+    {
+        label = 'WSL: Ubuntu-24.04',
+        -- args を省略すると、そのドメインの default_prog / shell が起動
+        domain = { DomainName = 'WSL:Ubuntu-24.04' },
+    },
+}
 
 ----------------------------------------------------
 -- Tab
@@ -32,7 +44,7 @@ config.window_frame = {
 
 -- タブバーを背景色に合わせる
 config.window_background_gradient = {
-    colors = { "#000000" },
+    colors = { "#000022" },
 }
 
 -- タブの追加ボタンを非表示
@@ -55,11 +67,11 @@ local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local background = "#5c6d74"
+    local background = "#556677"
     local foreground = "#FFFFFF"
     local edge_background = "none"
     if tab.is_active then
-        background = "#ae8b2d"
+        background = "#aa8822"
         foreground = "#FFFFFF"
     end
     local edge_foreground = background

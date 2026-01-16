@@ -57,7 +57,10 @@ return {
         { key = "r", mods = "SHIFT|CTRL", action = act({ MoveTabRelative = 1 }) },
         { key = "e", mods = "SHIFT|CTRL", action = act({ MoveTabRelative = -1 }) },
         -- Tab新規作成
-        { key = "t", mods = "SHIFT|CTRL", action = act({ SpawnTab = "CurrentPaneDomain" }) },
+        -- { key = "t", mods = "SHIFT|CTRL", action = act({ SpawnTab = "CurrentPaneDomain" }) },
+        { key = "t", mods = "SHIFT|CTRL", 
+            action = act.ShowLauncherArgs { flags = 'FUZZY|LAUNCH_MENU_ITEMS', title = 'Select: pwsh / WSL' } 
+        },
         -- Tabを閉じる
         { key = "w", mods = "SHIFT|CTRL", action = act({ CloseCurrentTab = { confirm = true } }) },
 
