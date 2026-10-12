@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+local is_windows = wezterm.target_triple:find("windows") ~= nil
 
 config.automatically_reload_config = true
 config.font_size = 14.0
@@ -10,21 +11,23 @@ config.macos_window_background_blur = 20
 ----------------------------------------------------
 -- Shell
 ----------------------------------------------------
-config.default_prog = { "pwsh.exe", "-NoLogo" }
-config.default_domain = 'WSL:Ubuntu-24.04'
+if is_windows then
+    config.default_prog = { "pwsh.exe", "-NoLogo" }
+    config.default_domain = 'WSL:Ubuntu-24.04'
 
-config.launch_menu = {
-    {
-        label = 'PowerShell',
-        args = { 'pwsh.exe', '-NoLogo' },
-        domain = { DomainName = 'local' },
-    },
-    {
-        label = 'WSL: Ubuntu-24.04',
-        -- args を省略すると、そのドメインの default_prog / shell が起動
-        domain = { DomainName = 'WSL:Ubuntu-24.04' },
-    },
-}
+    config.launch_menu = {
+        {
+            label = 'PowerShell',
+            args = { 'pwsh.exe', '-NoLogo' },
+            domain = { DomainName = 'local' },
+        },
+        {
+            label = 'WSL: Ubuntu-24.04',
+            -- args を省略すると、そのドメインの default_prog / shell が起動
+            domain = { DomainName = 'WSL:Ubuntu-24.04' },
+        },
+    }
+end
 
 ----------------------------------------------------
 -- Tab

@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local is_windows = wezterm.target_triple:find("windows") ~= nil
 
 -- Show which key table is active in the status area
 wezterm.on("update-right-status", function(window, pane)
@@ -58,8 +59,10 @@ return {
         { key = "e", mods = "SHIFT|CTRL", action = act({ MoveTabRelative = -1 }) },
         -- Tab新規作成
         -- { key = "t", mods = "SHIFT|CTRL", action = act({ SpawnTab = "CurrentPaneDomain" }) },
-        { key = "t", mods = "SHIFT|CTRL", 
-            action = act.ShowLauncherArgs { flags = 'FUZZY|LAUNCH_MENU_ITEMS', title = 'Select: pwsh / WSL' } 
+        { key = "t", mods = "SHIFT|CTRL",
+            action = is_windows
+                and act.ShowLauncherArgs { flags = 'FUZZY|LAUNCH_MENU_ITEMS', title = 'Select: pwsh / WSL' }
+                or act.SpawnTab("CurrentPaneDomain")
         },
         -- Tabを閉じる
         { key = "w", mods = "SHIFT|CTRL", action = act({ CloseCurrentTab = { confirm = true } }) },
