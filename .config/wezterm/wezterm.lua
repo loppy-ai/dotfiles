@@ -3,6 +3,9 @@ local config = wezterm.config_builder()
 local is_windows = wezterm.target_triple:find("windows") ~= nil
 
 config.automatically_reload_config = true
+config.font = wezterm.font_with_fallback({
+    "UDEV Gothic NF",
+})
 config.font_size = 14.0
 config.use_ime = true
 config.window_background_opacity = 0.8
