@@ -82,6 +82,11 @@ return {
         { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
         -- Pane選択
         { key = "f", mods = "LEADER", action = act.PaneSelect },
+        -- Pane入れ替え（番号を選んで、今のペインと入れ替え）
+        { key = "o", mods = "LEADER", action = act.PaneSelect({ mode = "SwapWithActive" }) },
+        -- Paneを回転して入れ替え
+        { key = "]", mods = "LEADER", action = act.RotatePanes("Clockwise") },
+        { key = "[", mods = "LEADER", action = act.RotatePanes("CounterClockwise") },
         -- 選択中のPaneのみ表示
         { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
         -- コピーモード
@@ -93,7 +98,7 @@ return {
         -- フォントサイズのリセット
         { key = "0", mods = "CTRL", action = act.ResetFontSize },
         -- 設定再読み込み
-        { key = "r", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
+        { key = "R", mods = "LEADER|SHIFT", action = act.ReloadConfiguration },
         -- キーテーブル用
         { key = "s", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
     },
